@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <title>Calculator</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link href="assets/css/style.css" rel="stylesheet" />
+  </head>
+  <body>
+    <form name="calcform">
+      <div class="calculator">
+        <div class="cell"></div>
+        <h1 class="Canon">
+          Canon
+          <p class="modelno">LS-100TS</p>
+        </h1>
+        <p class="battery">
+          SOLAR AND BATTERY
+          <i class="fa fa-sun-o" aria-hidden="true"></i>
+          <i class="fa fa-star-o" aria-hidden="true"></i>
+          <span class="digit"> 10 digit </span>
+        </p>
+        <div class="out">
+          <input
+            type="text"
+            placeholder="0"
+            class="cleaner"
+            name="txt1"
+            style="text-align: right"
+          /><br />
+          <h2 class="tax">TAX & BUSINESS</h2>
+        </div>
+      </div>
+      <div class="calculator_body">
+        <input type="button" class="tax1" name="btnTAX+" value="TAX+" />
+        <input type="button" class="tax1" name="btnTAX-" value="TAX-" />
+        <input type="button" class="tax1" name="btnRATE" value="RATE" />
+        <input type="button" class="tax2" name="btnON/OFF" value="ON/OFF" />
+        <input type="button" class="tax3" name="btnC/CL" value="C/CL" />
+        <button class="tax3">
+          <i class="fa fa-arrow-right" aria-hidden="true"></i>
+        </button>
+        <input type="button" class="tax2" name="btnRM/CM" value="RM/CM" />
+        <input type="button" class="tax4" name="btnM+" value="M+" />
+        <input type="button" class="tax5" name="btnM-" value="M-" />
+        <input type="button" class="tax1" name="btn7" value="7" />
+        <input type="button" class="tax1" name="btn8" value="8" />
+        <input type="button" class="tax1" name="btn9" value="9" />
+        <input type="button" class="tax6" name="perbtn" value="%" />
+        <input type="button" class="tax7" name="btn" value="√" />
+        <input type="button" class="tax1" name="btn4" value="4" />
+        <input type="button" class="tax1" name="btn5" value="5" />
+        <input type="button" class="tax1" name="btn6" value="6" />
+        <input type="button" class="tax6" name="btnmul" value="*" />
+        <input type="button" class="tax7" name="divbtn" value="/" />
+        <input type="button" class="tax1" name="btn1" value="1" />
+        <input type="button" class="tax1" name="btn2" value="2" />
+        <input type="button" class="tax1" name="btn3" value="3" />
+        <input type="button" class="tax6" name="addbtn" value="+" />
+        <input type="button" class="tax7" name="subbtn" value="-" />
+        <input type="button" class="tax1" name="btn0" value="0" />
+        <input type="button" class="tax1" name="potbtn" value="." />
+        <input type="button" class="tax1" name="btn" value="+/-" />
+        <input type="button" class="tax8" name="eqlbtn" value="=" />
+      </div>
+    </form>
+    <script
+      src="https://code.jquery.com/jquery-3.6.4.min.js"
+      integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8="
+      crossorigin="anonymous"
+    ></script>
+    <script src="assets/js/init.js"></script>
+  </body>
+</html>
