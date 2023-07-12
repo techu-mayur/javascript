@@ -217,7 +217,7 @@
   .tax2 {
     width: 100px;
   }
-  input.tax2.on-off {
-    width: 120px;
+  .on-off {
+    width: 120px !important;
   }
 }
