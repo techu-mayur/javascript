@@ -45,7 +45,7 @@
   bottom: 0;
   left: 0;
   right: 0;
-  display: flex;
+  /* display: flex; */
   align-items: center;
   justify-content: center;
   max-width: 60%;
@@ -159,37 +159,45 @@
     padding: 0;
   }
   .quote-left-arrow {
-    top: -80px;
+    top: 20px;
     left: 10px;
   }
   .quote-right-arrow {
-    bottom: -80px;
+    bottom: 0;
     right: 20px;
   }
   .quote-buttons {
-    left: 60px;
-    bottom: 75px;
+    position: unset;
+    display: flex;
+    text-align: center;
+    margin: 2rem 0 1rem;
+    justify-content: space-evenly;
   }
   .social-buttons {
-    bottom: -24px;
-    right: 100px;
+    position: unset;
+    display: block;
+    text-align: center;
+    justify-content: unset;
   }
   section#quote {
     background: #0079eb;
+    padding: 2rem 1rem;
   }
   .quote-content-mobile {
     background: #fff;
     padding: 9rem 2rem 5rem;
     border-radius: 50px;
-    height: 400px;
+    position: relative;
   }
   .quote-content {
     max-width: 100%;
-    position: relative;
-    top: 190px;
-    height: 200px;
+    position: unset;
   }
   .btn.main-btn {
     padding: 10px 12px;
+    margin-inline-end: 0;
+  }
+  .social-buttons ul {
+    justify-content: center;
   }
 }
