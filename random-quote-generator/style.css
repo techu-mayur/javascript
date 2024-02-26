@@ -159,11 +159,11 @@
     padding: 0;
   }
   .quote-left-arrow {
-    top: -30px;
+    top: -80px;
     left: 10px;
   }
   .quote-right-arrow {
-    bottom: -30px;
+    bottom: -80px;
     right: 20px;
   }
   .quote-buttons {
@@ -181,11 +181,12 @@
     background: #fff;
     padding: 9rem 2rem 5rem;
     border-radius: 50px;
+    height: 400px;
   }
   .quote-content {
     max-width: 100%;
     position: relative;
-    top: 100px;
+    top: 190px;
     height: 200px;
   }
   .btn.main-btn {
