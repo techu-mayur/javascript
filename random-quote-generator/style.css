@@ -150,6 +150,10 @@
   }
   .quote-box {
     background-size: cover;
+    display: flex;
+    flex-direction: column;
+    height: 80vh;
+    margin: auto;
   }
   .quote-content p {
     font-size: 18px;
@@ -182,6 +186,7 @@
   section#quote {
     background: #0079eb;
     padding: 2rem 1rem;
+    height: 100vh;
   }
   .quote-content-mobile {
     background: #fff;
