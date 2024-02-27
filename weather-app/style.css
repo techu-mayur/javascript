@@ -1,0 +1,346 @@
+body {
+  font-family: "Exo 2", sans-serif;
+  color: #000;
+}
+#weather {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.weather-box {
+  background-color: #f2f3f7;
+  border-radius: 40px;
+  box-shadow: -6px -6px 8px rgba(255, 255, 255, 0.9),
+    5px 5px 8px rgba(0, 0, 0, 0.07);
+  height: 400px;
+}
+.weather-bg {
+  background: url(weather-bg.jpg) center center/cover no-repeat;
+  border-radius: 40px;
+  position: relative;
+  overflow: hidden; /* Ensure child elements don't extend beyond the bounds */
+  -webkit-transition: -webkit-transform 300ms ease;
+  transition: -webkit-transform 300ms ease;
+  -o-transition: transform 300ms ease;
+  transition: transform 300ms ease;
+  transition: transform 300ms ease, -webkit-transform 300ms ease;
+  -webkit-transform: translateZ(0) scale(1.02) perspective(1000px);
+  transform: translateZ(0) scale(1.02) perspective(1000px);
+}
+.weather-bg:hover {
+  -webkit-transform: scale(1.1) perspective(1500px) rotateY(10deg);
+  transform: scale(1.1) perspective(1500px) rotateY(10deg);
+}
+.weather-bg::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(114, 237, 242, 0.8) 10%,
+    rgba(81, 81, 229, 0.8) 100%
+  );
+  border-radius: 40px;
+}
+.location-data,
+.weather-degree {
+  padding: 2rem 2rem 0;
+  position: relative;
+  z-index: 1;
+  color: #fff;
+}
+.location-data .day {
+  margin-bottom: 1rem;
+}
+.location-data .day h3 {
+  font-size: 50px;
+  font-weight: 600;
+  margin: 0;
+}
+.location-data .date h4 {
+  font-size: 18px;
+  padding-inline-start: 10px;
+  font-weight: 500;
+}
+.location-data .location h5 {
+  font-size: 12px;
+  padding: 5px 10px;
+  font-weight: 500;
+}
+.weather-degree h2 {
+  font-size: 60px;
+  font-weight: 600;
+}
+.weather-degree p {
+  font-size: 25px;
+  font-weight: 500;
+}
+.weather-icon {
+  height: auto;
+  width: 90px;
+}
+.canvas {
+  position: relative;
+  padding-top: 100%;
+}
+.sun {
+  position: absolute;
+  width: 42%;
+  height: 42%;
+  top: 25%;
+  right: 15%;
+  background: radial-gradient(#fdac49, #fcd422);
+  border-radius: 50%;
+  animation: spinSun 20s linear infinite;
+}
+.sun:after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0%;
+  left: 0%;
+  background: inherit;
+  border-radius: 50%;
+}
+.sun .beam:nth-child(even):before {
+  background: #fdac49;
+}
+.sun .beam:nth-child(even):after {
+  background: #fdac49;
+}
+.sun .beam:nth-child(odd):before {
+  background: #fcd422;
+}
+.sun .beam:nth-child(odd):after {
+  background: #fcd422;
+}
+.sun .beam:nth-of-type(1) {
+  position: absolute;
+  width: 15%;
+  height: 140%;
+  top: -20%;
+  left: 42.5%;
+}
+.sun .beam:nth-of-type(1):before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 13%;
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+}
+.sun .beam:nth-of-type(1):after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 13%;
+  clip-path: polygon(50% 100%, 0 0, 100% 0);
+}
+.sun .beam:nth-of-type(2) {
+  position: absolute;
+  width: 15%;
+  height: 140%;
+  top: -20%;
+  left: 42.5%;
+  transform: rotate(22.5deg);
+}
+.sun .beam:nth-of-type(2):before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 13%;
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+}
+.sun .beam:nth-of-type(2):after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 13%;
+  clip-path: polygon(50% 100%, 0 0, 100% 0);
+}
+.sun .beam:nth-of-type(3) {
+  position: absolute;
+  width: 15%;
+  height: 140%;
+  top: -20%;
+  left: 42.5%;
+  transform: rotate(45deg);
+}
+.sun .beam:nth-of-type(3):before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 13%;
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+}
+.sun .beam:nth-of-type(3):after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 13%;
+  clip-path: polygon(50% 100%, 0 0, 100% 0);
+}
+.sun .beam:nth-of-type(4) {
+  position: absolute;
+  width: 15%;
+  height: 140%;
+  top: -20%;
+  left: 42.5%;
+  transform: rotate(67.5deg);
+}
+.sun .beam:nth-of-type(4):before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 13%;
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+}
+.sun .beam:nth-of-type(4):after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 13%;
+  clip-path: polygon(50% 100%, 0 0, 100% 0);
+}
+.sun .beam:nth-of-type(5) {
+  position: absolute;
+  width: 15%;
+  height: 140%;
+  top: -20%;
+  left: 42.5%;
+  transform: rotate(90deg);
+}
+.sun .beam:nth-of-type(5):before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 13%;
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+}
+.sun .beam:nth-of-type(5):after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 13%;
+  clip-path: polygon(50% 100%, 0 0, 100% 0);
+}
+.sun .beam:nth-of-type(6) {
+  position: absolute;
+  width: 15%;
+  height: 140%;
+  top: -20%;
+  left: 42.5%;
+  transform: rotate(112.5deg);
+}
+.sun .beam:nth-of-type(6):before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 13%;
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+}
+.sun .beam:nth-of-type(6):after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 13%;
+  clip-path: polygon(50% 100%, 0 0, 100% 0);
+}
+.sun .beam:nth-of-type(7) {
+  position: absolute;
+  width: 15%;
+  height: 140%;
+  top: -20%;
+  left: 42.5%;
+  transform: rotate(135deg);
+}
+.sun .beam:nth-of-type(7):before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 13%;
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+}
+.sun .beam:nth-of-type(7):after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 13%;
+  clip-path: polygon(50% 100%, 0 0, 100% 0);
+}
+.sun .beam:nth-of-type(8) {
+  position: absolute;
+  width: 15%;
+  height: 140%;
+  top: -20%;
+  left: 42.5%;
+  transform: rotate(157.5deg);
+}
+.sun .beam:nth-of-type(8):before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 13%;
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+}
+.sun .beam:nth-of-type(8):after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 13%;
+  clip-path: polygon(50% 100%, 0 0, 100% 0);
+}
+@keyframes spinSun {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.cloud {
+  position: absolute;
+  width: 40%;
+  height: 40%;
+  top: 40%;
+  left: 25%;
+  background: #fffafa;
+  border-radius: 44% 56% 49% 51%/71% 63% 37% 29%;
+}
+.cloud:before {
+  content: "";
+  position: absolute;
+  width: 85%;
+  height: 85%;
+  top: 10%;
+  left: -50%;
+  right: -50%;
+  background: inherit;
+  right: unset;
+  border-radius: 52% 48% 58% 42%/43% 61% 39% 57%;
+}
+.cloud:after {
+  content: "";
+  position: absolute;
+  width: 85%;
+  height: 85%;
+  top: 10%;
+  left: -50%;
+  right: -50%;
+  background: inherit;
+  left: unset;
+  border-radius: 52% 48% 49% 51%/43% 61% 39% 57%;
+}
