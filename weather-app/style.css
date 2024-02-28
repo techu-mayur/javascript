@@ -14,7 +14,6 @@ body {
   border-radius: 40px;
   box-shadow: -6px -6px 8px rgba(255, 255, 255, 0.9),
     5px 5px 8px rgba(0, 0, 0, 0.07);
-  height: 400px;
 }
 .weather-bg {
   background: url(weather-bg.jpg) center center/cover no-repeat;
@@ -343,4 +342,207 @@ body {
   background: inherit;
   left: unset;
   border-radius: 52% 48% 49% 51%/43% 61% 39% 57%;
+}
+.weather-content {
+  padding: 2rem 2rem 0.2rem;
+}
+.weather-content li {
+  font-size: 25px;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+.weather-content li span {
+  float: right;
+  display: block;
+}
+.weather-day-container {
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+  flex-wrap: wrap;
+  flex-direction: row;
+  gap: 10px;
+}
+.weather-day-column {
+  padding: 10px;
+  text-align: center;
+  width: 100px;
+  background-color: #fff;
+  border-radius: 10px;
+}
+.weather-day-column.active,
+.weather-day-column:hover {
+  background: linear-gradient(
+    135deg,
+    rgba(114, 237, 242, 0.8) 10%,
+    rgba(81, 81, 229, 0.8) 100%
+  );
+  color: #fff;
+  transition: 0.3s ease-in-out !important;
+  -webkit-transition: 0.3s ease-in-out !important;
+  -moz-transition: 0.3s ease-in-out !important;
+  -ms-transition: 0.3s ease-in-out !important;
+  -o-transition: 0.3s ease-in-out !important;
+}
+.weather-day-column h6 {
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 0px;
+}
+.weather-day-column p {
+  margin-bottom: 5px;
+  font-size: 12px;
+  font-weight: 600;
+}
+.weather-day-icon {
+  margin-bottom: 0.5rem;
+}
+.change-weather-btn {
+  padding: 15px 20px;
+  text-align: center;
+}
+.change-weather-btn button {
+  background: linear-gradient(
+    135deg,
+    rgba(114, 237, 242, 0.8) 10%,
+    rgba(81, 81, 229, 0.8) 100%
+  );
+  border: 0;
+  color: #fff;
+  padding: 10px 40px;
+  border-radius: 20px;
+}
+.change-weather-btn button:hover {
+  background: #fff;
+}
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  padding: 12px;
+  z-index: 1;
+}
+.dropdown-content a {
+  display: block;
+  padding: 8px;
+  text-decoration: none;
+  color: #333;
+  cursor: pointer;
+}
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
+input#locationInput {
+  outline: 0;
+  box-shadow: unset;
+}
+#locationModal .modal-content {
+  padding: 5rem;
+  text-align: center;
+  border-radius: 40px;
+  background: url(weather-bg.jpg) no-repeat center center;
+  -webkit-border-radius: 40px;
+  -moz-border-radius: 40px;
+  -ms-border-radius: 40px;
+  -o-border-radius: 40px;
+  background-size: cover;
+}
+#locationModal .modal-header,
+#locationModal .modal-footer {
+  border: 0;
+  justify-content: center;
+}
+h5#locationModalLabel {
+  text-align: center;
+  font-size: 30px;
+  color: #ffff;
+}
+#locationModal button.btn-close {
+  position: absolute;
+  outline: 0;
+  box-shadow: unset;
+  right: 30px;
+  top: 30px;
+}
+#locationModal .modal-footer {
+  margin-top: 3rem;
+  justify-content: space-between !important;
+}
+.modal-footer .btn {
+  display: none;
+}
+.modal-footer .custom-cloud-btn {
+  background: #fff;
+  width: 90px;
+  height: 42px;
+  -webkit-animation: clouds 40s infinite;
+  margin-left: 0;
+  opacity: 0.85;
+  position: relative;
+  cursor: pointer;
+  padding: 8px; /* Adjust padding as needed */
+  border: none;
+}
+.custom-cloud-btn:before {
+  border-radius: 50%;
+  box-shadow: 20px -20px 0 0 #fff, 90px 0 0 0 #fff, 60px -27px 0 8px #fff;
+  content: "";
+  position: absolute;
+  width: 48px;
+  height: 48px;
+  left: -22px;
+  bottom: 0;
+  background: #fff;
+  z-index: -1;
+}
+@media (max-width: 768px) {
+  .weather-box {
+    padding: 1rem;
+    background: #fff;
+  }
+  .weather-bg::before {
+    border-bottom-left-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
+  }
+  .weather-bg {
+    border-bottom-left-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
+  }
+  #weather {
+    height: fit-content;
+  }
+  .weather-day-container {
+    padding: 5px;
+    gap: 5px;
+  }
+  .weather-day-column {
+    width: 90px;
+    background-color: #f2f3f7;
+  }
+  .weather-content li {
+    font-size: 18px;
+    margin-bottom: 0.5rem;
+  }
+  .location-data .day h3 {
+    font-size: 40px;
+  }
+  .location-data,
+  .weather-degree {
+    padding: 1rem 2rem 0;
+  }
+  .weather-degree h2 {
+    font-size: 50px;
+  }
+  .weather-icon {
+    width: 50px;
+  }
+  .modal-footer {
+    margin-top: 3rem;
+    justify-content: space-between;
+  }
+  #locationModal .modal-content {
+    padding: 1rem;
+  }
 }
