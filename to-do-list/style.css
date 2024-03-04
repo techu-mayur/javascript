@@ -1,0 +1,302 @@
+body {
+  font-family: "Anta", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  color: #000;
+}
+.to-do-sidebar {
+  background: #c06060;
+  border-radius: 0;
+  position: sticky;
+  top: 0;
+  transition: all 0.3s ease;
+  overflow-x: hidden; /* Hide the horizontal scrollbar */
+  border: 1px solid #000;
+  box-shadow: 3px 3px 0 #000000;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  -ms-border-radius: 0;
+  -o-border-radius: 0;
+  margin: 50px 0;
+  padding: 30px;
+}
+.to-do-toggler {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.toggler-bar {
+  border: 1px solid #000;
+  padding: 10px 8px;
+  background: pink;
+  transition: filter 0.3s ease-in-out 0s;
+  box-shadow: 3px 3px 0 #000000;
+  cursor: pointer;
+  width: 50px;
+}
+.toggler-bar i {
+  font-size: 25px;
+  display: block;
+  text-align: center;
+}
+.toggler-bar span:last-child {
+  margin-bottom: 0;
+}
+.to-do-toggler h3 {
+  margin: 0;
+  color: #000;
+}
+.to-do-sidebar hr,
+.to-do-list-content hr {
+  border-top: 2px solid #000;
+  opacity: 1;
+  margin: 1.5rem 0;
+}
+.sidebar-list button {
+  width: 100%;
+  height: 60px;
+  margin-bottom: 19px;
+  text-align: left;
+  font-weight: 700;
+  background-color: #7532fa;
+  transition: filter 0.3s ease-in-out 0s;
+  box-shadow: 3px 3px 0 #000000;
+  color: #000;
+  text-shadow: unset;
+  letter-spacing: 1px;
+  padding-left: 15px;
+  font-size: 20px;
+}
+.sidebar-icon {
+  display: inline;
+  padding-right: 10px;
+  vertical-align: middle;
+}
+.sidebar-icon i {
+  font-size: 30px;
+}
+.to-do-list-content {
+  height: calc(100% - 2em);
+  background: #c06060;
+  border-radius: 0;
+  transition: width 0.3s ease-in-out 0s;
+  border: 1px solid #000;
+  box-shadow: 3px 3px 0 #000000;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  -ms-border-radius: 0;
+  -o-border-radius: 0;
+  margin: 50px 8px;
+  padding: 30px;
+}
+.search-bar {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  justify-content: center;
+  border-radius: 0;
+  border: none;
+  height: 3em;
+  width: calc(100% - 0.5em);
+  box-shadow: 3px 3px 0 #000000;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  -ms-border-radius: 0;
+  -o-border-radius: 0;
+}
+.search-bar input,
+.search-bar .form-control:focus {
+  border: 1px solid #1a161a;
+  background-color: #49a6d1;
+  font-weight: 800;
+  padding-left: 1em;
+  transition: filter 0.3s ease-in-out 0s;
+  height: 100%;
+  width: 100%;
+  padding-right: 4em;
+  box-shadow: 0px 3px 0 #000000;
+  border-radius: 0;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  -ms-border-radius: 0;
+  -o-border-radius: 0;
+  border-right: 0;
+}
+.search-bar button {
+  height: 3em;
+  background: none;
+  border: 1px solid #1a161a;
+  border-left: 0;
+  background-color: #49a6d1;
+  padding-right: 20px;
+}
+.search-bar button i {
+  color: #1a161a6d;
+}
+.to-do-list-content h2 {
+  font-weight: 900;
+  font-size: 50px;
+  margin-bottom: 20px;
+}
+.add-task-btn .new-task-btn {
+  cursor: pointer;
+  background-color: #4bec8e;
+  color: #1a161a;
+  border-radius: 0;
+  height: 3em;
+  width: calc(100% - 0.5em);
+  font-weight: 900;
+  font-size: 1rem;
+  border: 1px solid black;
+  transition: filter 0.3s ease-in-out 0s;
+  box-shadow: 3px 3px 0 #000000;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  -ms-border-radius: 0;
+  -o-border-radius: 0;
+}
+#AddTask .modal-content {
+  background-color: #4bec8e;
+  border: 0;
+  border-radius: 0;
+  padding: 20px;
+}
+#AddTask .modal-header h2 {
+  font-weight: 900;
+  font-size: 40px;
+  margin-bottom: 0px;
+}
+#AddTask .modal-header,
+#AddTask .modal-footer {
+  border: 0;
+}
+#AddTask .form-control {
+  border-radius: 0;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  -ms-border-radius: 0;
+  -o-border-radius: 0;
+  border: 1px solid black;
+  box-shadow: 3px 3px 0 #000000;
+}
+#AddTask .modal-footer button {
+  cursor: pointer;
+  background-color: #fff;
+  color: #1a161a;
+  border-radius: 0;
+  height: 3em;
+  width: calc(40% - 0.5em);
+  font-weight: 900;
+  font-size: 1rem;
+  border: 1px solid black;
+  transition: filter 0.3s ease-in-out 0s;
+  box-shadow: 3px 3px 0 #000000;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  -ms-border-radius: 0;
+  -o-border-radius: 0;
+  margin-inline: 20px;
+}
+#AddTask .modal-footer {
+  justify-content: space-between;
+}
+#AddTask .modal-header .btn-close {
+  border: 1px solid #000;
+  padding: 10px 8px;
+  background-color: pink;
+  transition: filter 0.3s ease-in-out 0s;
+  box-shadow: 3px 3px 0 #000000;
+  cursor: pointer;
+  opacity: unset;
+}
+.sidebar-list button .text-content {
+  display: inline-block;
+  margin-left: 10px;
+}
+.to-do-sidebar.sidebar-closed .to-do-toggler h3,
+.to-do-sidebar.sidebar-closed .sidebar-list button .text-content {
+  display: none;
+}
+.to-do-sidebar.sidebar-closed {
+  /* margin-left: -50px; */
+  width: 120px;
+}
+.to-do-sidebar.sidebar-closed .toggler-bar {
+  width: 100%;
+  height: 60px;
+  padding-top: 15px;
+}
+.to-do-sidebar.sidebar-closed .to-do-toggler {
+  justify-content: center;
+}
+.to-do-sidebar.sidebar-closed .toggler-bar span {
+  display: block;
+  background: #000;
+  width: 100%;
+  margin-bottom: 10px;
+  height: 3px;
+}
+.to-do-sidebar.sidebar-closed .toggler-bar i {
+  display: none;
+}
+.task-list {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  background: #fff;
+  padding: 20px 20px 0;
+  margin: 1rem 0;
+}
+.tasklist-content h3 {
+  margin: 0;
+  font-size: 18px;
+}
+.tasklist-button button {
+  margin-inline: 4px;
+}
+#taskList .tasklist-content p {
+  max-width: 80%;
+  margin-top: 10px;
+}
+.tasklist-content {
+  max-width: 80%;
+}
+#taskList {
+  display: none; /* Hide the task list by default */
+}
+#taskList .tasklist-content p.description-preview {
+  max-height: 3.6em; /* Set the maximum height for two lines */
+  margin-top: 10px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: max-height 0.3s ease;
+}
+#taskList .tasklist-content p.description-preview.expanded {
+  max-height: none; /* Remove the maximum height on expanding */
+  white-space: normal;
+  overflow: visible;
+  text-overflow: unset;
+}
+#collapseDescription {
+  display: none;
+}
+.collapse.show {
+  display: block;
+}
+@media (max-width: 768px) {
+  .sidebar-list button {
+    font-size: 15px;
+  }
+  .to-do-list-content h2 {
+    font-size: 30px;
+  }
+  .add-task-btn {
+    margin: 1rem 0 0;
+  }
+}
