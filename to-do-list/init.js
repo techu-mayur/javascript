@@ -12,6 +12,8 @@ function loadTasksFromLocalStorage() {
     });
     // Initialize tooltips after loading tasks
     initTooltips();
+    // Show the hidden task
+    $("#taskList").show();
   }
 }
 // Function to initialize tooltips
