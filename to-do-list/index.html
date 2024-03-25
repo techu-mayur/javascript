@@ -1,200 +1,179 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <title>
-      The Ultimate To-Do List App: Boost Productivity with Techu Mayur (HTML,
-      CSS, JS)
-    </title>
-    <meta
-      name="description"
-      content="Elevate your productivity with Techu Mayur, the ultimate To-Do List app! Crafted with HTML, CSS, and JavaScript for seamless task management. Stay organized, prioritize effortlessly, and achieve more in less time."
-    />
-    <meta charset="UTF-8" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Anta&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
-      crossorigin="anonymous"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-      integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
-    <link href="style.css" rel="stylesheet" />
-  </head>
-  <body>
-    <section id="to-do-list">
-      <div class="container-fluid">
-        <div class="row justify-content-center">
-          <div class="col-md-4">
-            <div class="to-do-sidebar">
-              <div class="to-do-toggler">
-                <div class="order-2 order-md-1">
-                  <h3 class="text-content">To Do List</h3>
-                </div>
-                <div class="toggler-bar order-1 order-md-2" id="toggleButton">
-                  <i class="fa-solid fa-x"></i>
-                  <span></span>
-                  <span></span>
-                  <span></span>
-                </div>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <title>
+    The Ultimate To-Do List App: Boost Productivity with Techu Mayur (HTML,
+    CSS, JS)
+  </title>
+  <meta name="description"
+    content="Elevate your productivity with Techu Mayur, the ultimate To-Do List app! Crafted with HTML, CSS, and JavaScript for seamless task management. Stay organized, prioritize effortlessly, and achieve more in less time." />
+  <meta charset="UTF-8" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Anta&display=swap" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link href="style.css" rel="stylesheet" />
+</head>
+
+<body>
+  <section id="to-do-list">
+    <div class="container-fluid">
+      <div class="row justify-content-center">
+        <div class="col-md-4">
+          <div class="to-do-sidebar">
+            <div class="to-do-toggler">
+              <div class="order-2 order-md-1">
+                <h3 class="text-content">To Do List</h3>
               </div>
-              <hr />
-              <div class="sidebar-list">
-                <ul class="list-unstyled p-0">
-                  <li>
-                    <button>
-                      <div class="sidebar-icon">
-                        <i class="fas fa-list-check"></i>
-                      </div>
-                      <span class="text-content">Task</span>
-                    </button>
-                  </li>
-                  <li>
-                    <button>
-                      <div class="sidebar-icon">
-                        <i class="far fa-square-check"></i>
-                      </div>
-                      <span class="text-content">Completed Task</span>
-                    </button>
-                  </li>
-                  <li>
-                    <button>
-                      <div class="sidebar-icon">
-                        <i class="far fa-circle-xmark"></i>
-                      </div>
-                      <span class="text-content">Deleted Task</span>
-                    </button>
-                  </li>
-                </ul>
+              <div class="toggler-bar order-1 order-md-2" id="toggleButton">
+                <i class="fa-solid fa-x"></i>
+                <span></span>
+                <span></span>
+                <span></span>
               </div>
             </div>
+            <hr />
+            <div class="sidebar-list">
+              <ul class="list-unstyled p-0">
+                <li>
+                  <button onclick="showTab('task')" class="active">
+                    <div class="sidebar-icon">
+                      <i class="fas fa-list-check"></i>
+                    </div>
+                    <span class="text-content">Task</span>
+                  </button>
+                </li>
+                <li>
+                  <button onclick="showTab('completedTask')">
+                    <div class="sidebar-icon">
+                      <i class="far fa-square-check"></i>
+                    </div>
+                    <span class="text-content">Completed Task</span>
+                  </button>
+                </li>
+                <li>
+                  <button onclick="showTab('deletedTask')">
+                    <div class="sidebar-icon">
+                      <i class="far fa-circle-xmark"></i>
+                    </div>
+                    <span class="text-content">Deleted Task</span>
+                  </button>
+                </li>
+              </ul>
+            </div>
           </div>
-          <div class="col-md-7">
-            <div class="to-do-list-content">
-              <h2>Things to do:</h2>
-              <div class="row">
-                <div class="col-md-8">
-                  <div class="search-bar">
-                    <input
-                      type="search"
-                      class="form-control"
-                      placeholder="enter your search terms here"
-                    />
-                    <button>
-                      <i class="fa-solid fa-magnifying-glass"></i>
-                    </button>
+        </div>
+        <div class="col-md-7">
+          <div class="tab-content" id="tabContent">
+            <!-- Task Tab Content -->
+            <div class="task-list-content" id="taskListContent">
+              <div class="to-do-list-content">
+                <h2>Things to do:</h2>
+                <div class="row">
+                  <div class="col-md-8">
+                    <div class="search-bar">
+                      <input type="search" class="form-control" placeholder="enter your search terms here" />
+                      <button>
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                      </button>
+                    </div>
                   </div>
-                </div>
-                <div class="col-md-4">
-                  <div class="add-task-btn">
-                    <button
-                      class="new-task-btn"
-                      data-bs-toggle="modal"
-                      data-bs-target="#AddTask"
-                    >
-                      Add New Task
-                    </button>
-                    <!-- Modal -->
-                    <div
-                      class="modal fade"
-                      id="AddTask"
-                      tabindex="-1"
-                      aria-labelledby="AddTaskLabel"
-                      aria-hidden="true"
-                    >
-                      <div class="modal-dialog modal-dialog-centered">
-                        <div class="modal-content">
-                          <div class="modal-header">
-                            <h2 class="modal-title" id="AddTaskLabel">
-                              Create a new task
-                            </h2>
-                            <button
-                              type="button"
-                              class="btn-close"
-                              data-bs-dismiss="modal"
-                              aria-label="Close"
-                            ></button>
-                          </div>
-                          <div class="modal-body">
-                            <form>
-                              <div class="mb-4">
-                                <label for="task-name" class="form-label"
-                                  >Task Name</label
-                                >
-                                <input
-                                  type="text"
-                                  class="form-control"
-                                  id="task-name"
-                                  placeholder="Enter Task Name"
-                                />
-                              </div>
-                              <div class="mb-2">
-                                <label for="task-description" class="form-label"
-                                  >Task Description</label
-                                >
-                                <textarea
-                                  class="form-control"
-                                  id="task-description"
-                                  rows="3"
-                                  placeholder="Enter Task Description"
-                                ></textarea>
-                              </div>
-                            </form>
-                          </div>
-                          <div class="modal-footer">
-                            <button
-                              type="button"
-                              class="btn btn-secondary"
-                              data-bs-dismiss="modal"
-                            >
-                              Close
-                            </button>
-                            <button
-                              type="button"
-                              class="btn btn-primary"
-                              id="saveTask"
-                            >
-                              Save
-                            </button>
+                  <div class="col-md-4">
+                    <div class="add-task-btn">
+                      <button class="new-task-btn" data-bs-toggle="modal" id="addNewTaskButton"
+                        data-bs-target="#AddTask">
+                        Add New Task
+                      </button>
+                      <!-- Modal -->
+                      <!-- Add new task form within the modal -->
+                      <div class="modal fade" id="AddTask" tabindex="-1" aria-labelledby="AddTaskLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h2 class="modal-title" id="AddTaskLabel">
+                                Create a new task
+                              </h2>
+                              <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                              <form action="">
+                                <div class="mb-4">
+                                  <label for="task-name" class="form-label">Task Name</label>
+                                  <input type="text" class="form-control" id="task-name"
+                                    placeholder="Enter Task Name" />
+                                </div>
+                                <div class="mb-4">
+                                  <label for="task-description" class="form-label">Task Description </label>
+                                  <textarea class="form-control" id="task-description" rows="3"
+                                    placeholder="Enter Task Description"></textarea>
+                                </div>
+                              </form>
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                                Close
+                              </button>
+                              <button type="button" class="btn btn-primary" id="saveTask" onclick="addTaskOrEdit()">
+                                Save
+                              </button>
+                            </div>
                           </div>
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
+                <hr />
+                <div class="task-list-main accordion accordion-flush" id="taskList">
+                </div>
               </div>
+            </div>
+          </div>
+          <!-- Completed Task Tab Content -->
+          <div class="task-list-content" id="completedTaskListContent" style="display: none;">
+            <div class="to-do-list-content">
+              <h2>Things done:</h2> <!-- Added heading here -->
+              <hr>
+              <div class="task-list-main accordion accordion-flush" id="completedTasksContainer">
+                <!-- Completed tasks will be dynamically generated here -->
+              </div>
+            </div>
+          </div>
+          <!-- Deleted Task Tab Content -->
+          <div class="task-list-content" id="deletedTaskListContent">
+            <div class="to-do-list-content">
+              <h2>Things deleted:</h2>
               <hr />
-              <div class="task-list-main" id="taskList"></div>
+              <div class="task-list-main accordion accordion-flush" id="deletedTaskAccordion">
+                <!-- Accordion items for deleted tasks will be dynamically generated here -->
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </section>
-    <script
-      src="https://code.jquery.com/jquery-3.7.1.min.js"
-      integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-      crossorigin="anonymous"
-    ></script>
-    <script src="init.js"></script>
-  </body>
+    </div>
+    </div>
+  </section>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+    integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+  <script src="https://cdn.tiny.cloud/1/tevy6is8v3yinvsmgsu8qtf8jo1wydnm0c0pgoicv4uv11ce/tinymce/7/tinymce.min.js"
+    referrerpolicy="origin"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"></script>
+  <script src="task.js"></script>
+</body>
+
 </html>

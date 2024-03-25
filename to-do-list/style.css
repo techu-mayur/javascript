@@ -139,6 +139,9 @@ body {
 .to-do-list-content h2 {
   font-weight: 900;
   font-size: 50px;
+  position: relative;
+}
+.to-do-list-content .accordion-item {
   margin-bottom: 20px;
 }
 .add-task-btn .new-task-btn {
@@ -242,6 +245,12 @@ body {
 .to-do-sidebar.sidebar-closed .toggler-bar i {
   display: none;
 }
+.modal-backdrop.fade.show {
+  /* z-index: 9999999; */
+}
+div#AddTask {
+  /* z-index: 9999999999; */
+}
 .task-list {
   display: flex;
   flex-wrap: nowrap;
@@ -256,8 +265,28 @@ body {
   margin: 0;
   font-size: 18px;
 }
+.tasklist-button {
+  display: flex;
+  justify-content: space-between;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  align-items: center;
+  right: 10%;
+}
 .tasklist-button button {
-  margin-inline: 4px;
+  height: 30px;
+  width: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-inline: 6px;
+  z-index: 999;
+  position: relative;
+  overflow: hidden;
+}
+.tasklist-button button i {
+  font-size: 15px;
 }
 #taskList .tasklist-content p {
   max-width: 80%;
@@ -266,28 +295,14 @@ body {
 .tasklist-content {
   max-width: 80%;
 }
-#taskList {
-  display: none; /* Hide the task list by default */
-}
-#taskList .tasklist-content p.description-preview {
-  max-height: 3.6em; /* Set the maximum height for two lines */
-  margin-top: 10px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  transition: max-height 0.3s ease;
-}
-#taskList .tasklist-content p.description-preview.expanded {
-  max-height: none; /* Remove the maximum height on expanding */
-  white-space: normal;
-  overflow: visible;
-  text-overflow: unset;
-}
-#collapseDescription {
-  display: none;
-}
-.collapse.show {
-  display: block;
+.accordion-button:not(.collapsed),
+.accordion-button:focus,
+#taskList .accordion-button:focus,
+#taskList .accordion-button:not(.collapsed) {
+  box-shadow: none;
+  outline: 0;
+  background-color: #fff;
+  color: #000;
 }
 @media (max-width: 768px) {
   .sidebar-list button {
@@ -298,5 +313,21 @@ body {
   }
   .add-task-btn {
     margin: 1rem 0 0;
+  }
+  .to-do-sidebar {
+    margin-bottom: 0;
+  }
+  .tasklist-button {
+    position: unset;
+    justify-content: left;
+    padding-left: 15px;
+    padding-bottom: 15px;
+  }
+  #completedTasksContainer .tasklist-button,
+  #deletedTaskAccordion .tasklist-button {
+    display: none;
+  }
+  #AddTask .modal-header h2 {
+    font-size: 30px;
   }
 }
