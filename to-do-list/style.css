@@ -3,6 +3,13 @@ body {
   font-weight: 400;
   font-style: normal;
   color: #000;
+  /* background: url("to-do-list-bg.jpg"); */
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+    url(to-do-list-bg.jpg);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center center;
 }
 .to-do-sidebar {
   background: #c06060;
