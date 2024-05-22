@@ -1,247 +1,140 @@
-$(window).on("load", function () {
-  // Show loader initially
-  $(".loader").fadeIn();
+document.addEventListener("DOMContentLoaded", async function () {
+  const clientId = "dbfc329374eb4362a541cec8ff7d8d84";
+  const clientSecret = "59a8c1cff28d42659771c6869a9235b1";
 
-  // Set a timeout to hide the loader after 2 seconds
-  setTimeout(function() {
-      $(".loader").fadeOut();
-  }, 2000);
-});
+  const playerContainer = document.querySelector(".player-container");
+  const playButton = playerContainer.querySelector(".play-btn i");
+  const nextButton = playerContainer.querySelector(".next-btn i");
+  const prevButton = playerContainer.querySelector(".prev-btn i");
+  const songTitle = playerContainer.querySelector(".song-name h3");
+  const authorImage = playerContainer.querySelector(".author img");
+  const musicThumbnail = playerContainer.querySelector(".music-bg img");
+  const progressBar = playerContainer.querySelector(".progress-bar");
+  const progressTimeCurrent = playerContainer.querySelector(
+    ".progress-time .time:first-child"
+  );
+  const progressTimeRemaining = playerContainer.querySelector(
+    ".progress-time .time:last-child"
+  );
+  const volumeButton = playerContainer.querySelector(".volume-btn i");
 
-// Initialize tooltips
-var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
-var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
-  return new bootstrap.Tooltip(tooltipTriggerEl)
-});
+  let currentSongIndex = 0;
+  let songs = [];
+  let audio = new Audio();
 
-$('.recommended-artist-carousel').owlCarousel({
-  loop:false,
-  dots:false,
-  nav:false,
-  margin:0,
-  responsiveClass:true,
-  responsive:{
-      0:{
-          items:2.5,
-      },
-      600:{
-          items:2.5,
-
-      },
-      1000:{
-          items:2.5,
-      }
-  }
-});
-
-$('.recent-played-carousel').owlCarousel({
-  loop:false,
-  dots:false,
-  nav:false,
-  margin:20,
-  responsiveClass:true,
-  responsive:{
-      0:{
-          items:3.5,
-      },
-      600:{
-          items:3.5,
-
-      },
-      1000:{
-          items:3.5,
-      }
-  }
-});
-
-$('.top-chart-carousel').owlCarousel({
-  loop:false,
-  dots:false,
-  nav:false,
-  margin:20,
-  responsiveClass:true,
-  responsive:{
-      0:{
-          items:2.5,
-      },
-      600:{
-          items:2.5,
-
-      },
-      1000:{
-          items:2.5,
-      }
-  }
-});
-
-// Tab click event
-$('ul.list-unstyled li').click(function(){
-  var tab_id = $(this).attr('data-tab');
-
-  // Remove the 'active' class from all tabs
-  $('ul.list-unstyled li').removeClass('active');
-  // Hide all tab content
-  $('.tab-pane').removeClass('active');
-
-  // Add the 'active' class to the clicked tab
-  $(this).addClass('active');
-  // Show the corresponding tab content
-  $("#" + tab_id).addClass('active');
-});
-
-// On click of a link with class "music"
-$(".music").click(function(e){
-  e.preventDefault(); // Prevent default link behavior
-
-  // Show the music container div
-  $("#music").show();
-});
-
-// Music player
-$(document).ready(function() {
-  const client_id = 'dbfc329374eb4362a541cec8ff7d8d84';
-  const client_secret = '59a8c1cff28d42659771c6869a9235b1';
-  const grant_type = 'client_credentials';
-
-  $.ajax({
-      url: 'https://accounts.spotify.com/api/token',
-      type: 'POST',
+  async function getAccessToken(clientId, clientSecret) {
+    const response = await fetch("https://accounts.spotify.com/api/token", {
+      method: "POST",
       headers: {
-          'Authorization': 'Basic ' + btoa(client_id + ':' + client_secret),
-          'Content-Type': 'application/x-www-form-urlencoded'
+        "Content-Type": "application/x-www-form-urlencoded",
+        Authorization: "Basic " + btoa(clientId + ":" + clientSecret),
       },
-      data: {
-          'grant_type': grant_type
-      },
-      success: function(response) {
-          const access_token = response.access_token;
-          // Now you can use this access_token to fetch playlist tracks
-          fetchPlaylistTracks(access_token);
-      },
-      error: function(xhr, status, error) {
-          console.error('Error:', error);
+      body: "grant_type=client_credentials",
+    });
+
+    const data = await response.json();
+    return data.access_token;
+  }
+
+  async function fetchBollywoodSongs(token) {
+    const response = await fetch(
+      "https://api.spotify.com/v1/search?q=hindi%20bollywood&type=track&limit=10",
+      {
+        headers: {
+          Authorization: "Bearer " + token,
+        },
       }
+    );
+
+    const data = await response.json();
+    return data.tracks.items;
+  }
+
+  try {
+    const token = await getAccessToken(clientId, clientSecret);
+    songs = await fetchBollywoodSongs(token);
+
+    if (songs.length > 0) {
+      loadSong(songs[currentSongIndex]);
+    }
+  } catch (error) {
+    console.error("Error fetching songs:", error);
+  }
+
+  function loadSong(song) {
+    console.log(song.preview_url); // Log the preview_url to check if it's valid
+    audio.src = song.preview_url;
+    songTitle.textContent = `${song.artists[0].name} - ${song.name}`;
+    authorImage.src = song.album.images[0].url;
+    musicThumbnail.src = song.album.images[0].url;
+    progressBar.style.width = "0%";
+    progressTimeCurrent.textContent = "00:00";
+    progressTimeRemaining.textContent = `-00:30`;
+  }
+
+  function formatTime(seconds) {
+    const mins = Math.floor(seconds / 60);
+    const secs = Math.floor(seconds % 60);
+    return `${mins}:${secs < 10 ? "0" : ""}${secs}`;
+  }
+
+  playButton.addEventListener("click", function () {
+    console.log("Play button clicked"); // Log to check if the button click event is triggered
+    console.log("Audio paused:", audio.paused); // Log the paused state of the audio
+    if (audio.paused) {
+      audio
+        .play()
+        .then(() => {
+          playButton.classList.replace("fa-play", "fa-pause");
+          console.log("Audio playing"); // Log for debugging
+        })
+        .catch((error) => {
+          console.error("Error playing audio:", error); // Log error if any
+        });
+    } else {
+      audio.pause();
+      playButton.classList.replace("fa-pause", "fa-play");
+      console.log("Audio paused"); // Log for debugging
+    }
   });
 
-  function fetchPlaylistTracks(access_token) {
-      const playlist_id = 'YOUR_PLAYLIST_ID';
-      const apiUrl = `https://api.spotify.com/v1/playlists/${playlist_id}/tracks`;
-
-      $.ajax({
-          url: apiUrl,
-          type: 'GET',
-          headers: {
-              'Authorization': 'Bearer ' + access_token
-          },
-          success: function(response) {
-              // Update UI with fetched playlist tracks
-              const songsList = response.items.map(item => ({
-                  title: item.track.name,
-                  artist: item.track.artists[0].name,
-                  album: item.track.album.name,
-                  thumb: item.track.album.images[0].url,
-                  link: item.track.preview_url // Assuming the API provides preview_url for song preview
-              }));
-              // Call changeSong to load the first song
-              changeSong(songsList);
-          },
-          error: function(xhr, status, error) {
-              console.error('Error:', error);
-          }
-      });
-  }
-
-  // Initialize variables
-  var currIndex = 0;
-  var isPlaying = false;
-  var currSong = new Audio();
-
-  var songThumb = document.querySelector(".song-thumb");
-  var songTitle = document.querySelector(".song-info-title");
-  var songArtist = document.querySelector(".song-info-artist");
-  var songAlbum = document.querySelector(".song-info-album");
-
-  var stateButton = document.querySelector(".player-state-btn");
-  var songProgressBar = document.querySelector(".song-progress-value");
-  var volumeSlider = document.querySelector("#volume-slider");
-  var volumeTrail = document.querySelector(".volume-trail");
-
-  // Change song based on index
-  function changeSong(songsList) {
-      let currentStatus = isPlaying;
-      if (currentStatus) toggleState();
-      songTitle.innerHTML = songsList[currIndex]["title"];
-      songArtist.innerHTML = songsList[currIndex]["artist"];
-      songAlbum.innerHTML = songsList[currIndex]["album"];
-      songThumb.style.backgroundImage = `url(${songsList[currIndex]["thumb"]})`;
-      currSong.src = songsList[currIndex]["link"];
-
-      if (currentStatus) toggleState();
-  }
-
-  // Play the next song
-  function nextSong() {
-      currIndex++;
-      if (currIndex >= songsList.length) currIndex = 0;
-      changeSong(songsList);
-  }
-
-  // Play the previous song
-  function prevSong() {
-      currIndex--;
-      if (currIndex < 0) currIndex = songsList.length - 1;
-      changeSong(songsList);
-  }
-
-  // Toggle play/pause state
-  function toggleState() {
-      if (isPlaying) {
-          currSong.pause();
-          stateButton.classList = "fas fa-play-circle player-state-btn";
-      } else {
-          currSong.play();
-          stateButton.classList = "fas fa-pause-circle player-state-btn";
-      }
-      isPlaying = !isPlaying;
-  }
-
-  // Adjust volume
-  function adjustVolume(currVol) {
-      currSong.volume = currVol;
-      if (currVol !== "0" && currVol !== 0)
-          volumeTrail.style.width = `${currVol * 100 - 2}%`;
-      else
-          volumeTrail.style.width = "0%";
-      volumeSlider.value = currVol;
-  }
-
-  // Update progress bar while playing
-  currSong.addEventListener('timeupdate', () => {
-      let currPosition = currSong.currentTime / currSong.duration * 600;
-      if (!isNaN(currPosition))
-          songProgressBar.setAttribute("stroke-dasharray", `${currPosition} ${600 - currPosition}`);
-      else
-          songProgressBar.setAttribute("stroke-dasharray", "0 600");
+  nextButton.addEventListener("click", function () {
+    currentSongIndex = (currentSongIndex + 1) % songs.length;
+    loadSong(songs[currentSongIndex]);
+    audio.play();
+    playButton.classList.replace("fa-play", "fa-pause");
   });
 
-  // Next song button click event
-  $('.player-move-btn').click(nextSong);
+  prevButton.addEventListener("click", function () {
+    currentSongIndex = (currentSongIndex - 1 + songs.length) % songs.length;
+    loadSong(songs[currentSongIndex]);
+    audio.play();
+    playButton.classList.replace("fa-play", "fa-pause");
+  });
+  audio.addEventListener("timeupdate", function () {
+    const duration = audio.duration || 30; // Fallback to 30 seconds if duration is not available
+    const currentTime = audio.currentTime;
+    const progressPercent = (currentTime / duration) * 100;
 
-  // Play/pause button click event
-  $('.player-state-btn').click(toggleState);
-
-  // Volume slider change event
-  $('#volume-slider').change(function() {
-      adjustVolume($(this).val());
+    if (!isNaN(progressPercent)) {
+      // Check if progressPercent is a valid number
+      progressBar.style.width = `${progressPercent}%`;
+      progressTimeCurrent.textContent = formatTime(currentTime);
+      progressTimeRemaining.textContent = `-${formatTime(
+        duration - currentTime
+      )}`;
+    }
   });
 
-  // Search input change event
-  $('.searchbar').on('input', function() {
-      let searchTerm = $(this).val().toLowerCase();
-      let filteredSongs = songsList.filter(song => {
-          return song.title.toLowerCase().includes(searchTerm) || song.artist.toLowerCase().includes(searchTerm);
-      });
-      // Update the UI with filtered songs
-      // For example, you can render the filtered songs in the search result box
+  audio.addEventListener("ended", function () {
+    nextButton.click();
+  });
+
+  volumeButton.addEventListener("click", function () {
+    console.log("Volume button clicked"); // Log to check if the volume button click event is triggered
+    console.log("Audio muted:", audio.muted); // Log the muted state of the audio
+    audio.muted = !audio.muted;
+    volumeButton.classList.toggle("fa-volume-mute", audio.muted);
+    volumeButton.classList.toggle("fa-volume-high", !audio.muted);
   });
 });
