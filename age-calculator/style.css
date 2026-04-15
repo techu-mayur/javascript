@@ -1,0 +1,157 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    font-family: "Nunito", sans-serif;
+    font-size: 18px;
+    background-color: #eaeaea;
+}
+
+.loader {
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    background: #fff;
+    background: url("logo.png") 50% 50% no-repeat rgb(255, 255, 255);
+}
+
+main,
+.screen-two {
+    max-width: 400px;
+    border: 1px solid #ccc;
+    margin: 0 auto;
+    height: 100vh;
+    background: #6470de;
+    color: #fff;
+}
+
+.calculator-box {
+    background-color: #72e2b4;
+    padding: 25px;
+    border-radius: 20px;
+    color: #fff;
+    margin: 10px;
+}
+
+.calculator-box .form-group {
+    margin-bottom: 20px;
+}
+
+.calculator-box .form-group .form-label {
+    font-size: 20px;
+    font-family: "Nunito", sans-serif;
+    font-weight: 600;
+}
+
+.main-btn {
+    background-color: #6470de;
+    color: #fff;
+    display: block;
+    width: 100%;
+    margin: 30px 0 10px;
+    -webkit-transition: all .3s ease;
+    -moz-transition: all .3s ease;
+    transition: all .3s ease;
+}
+
+.main-btn:hover {
+    background-color: #fff;
+    color: #000;
+}
+
+#age-calculator h2 {
+    padding: 30px 0;
+    font-size: 40px;
+    font-weight: 700;
+    text-align: center;
+}
+
+.age-display h3 {
+    font-size: 25px;
+    font-weight: 700;
+    text-align: center;
+    padding: 30px 0;
+}
+
+.age-display ul {
+    display: flex;
+    justify-content: space-evenly;
+    list-style: none;
+    padding: 0;
+}
+
+.age-display ul li {
+    background-color: #fff;
+    color: #000;
+    padding: 12px 20px;
+    font-weight: 700;
+    font-size: 20px;
+}
+
+.screen-one {
+    background-color: #fff;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding-top: 20px;
+}
+
+#age-calculator .screen-one h2 {
+    color: #000;
+    padding: 30px 0 10px;
+}
+
+#age-calculator .screen-one p {
+    color: #000;
+    text-align: center;
+}
+
+.screen-one button {
+    display: block;
+    width: 50px;
+    height: 50px;
+    border: 0;
+    background: unset;
+}
+
+.form-control:focus {
+    border: 0;
+    box-shadow: unset;
+    outline: 0;
+}
+
+#age-calculator .screen-two {
+    display: none;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+#age-calculator .screen-one {
+    transition: opacity 0.5s ease-in-out;
+}
+
+#age-calculator .screen-two.show {
+    display: block;
+    opacity: 1;
+}
+
+.age-display ul li span {
+    font-weight: 500;
+    font-size: 15px;
+}
+
+.form-control {
+    height: 50px;
+}
+
+@media only screen and (max-width: 767px) {
+    .screen-one {
+        padding-top: 90px;
+    }
+}

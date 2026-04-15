@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Disable Right Click - JavaScript Examples</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" />
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f9f9f9;
+      margin: 0;
+      padding: 2rem;
+      color: #333;
+    }
+    .container {
+      max-width: 800px;
+      margin: auto;
+      background: white;
+      padding: 2rem;
+      box-shadow: 0 0 20px rgba(0,0,0,0.05);
+      border-radius: 10px;
+    }
+    h1 {
+      color: #0B666A;
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    .section {
+      margin-bottom: 2rem;
+    }
+    .section h2 {
+      color: #0B666A;
+    }
+    pre {
+      border-radius: 8px;
+    }
+    .footer {
+      text-align: center;
+      margin-top: 3rem;
+      font-size: 0.9rem;
+      color: #888;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <h1>🛑 Disable Right Click Examples</h1>
+  <div class="section">
+    <h2>1. Basic JavaScript</h2>
+    <p>This code prevents the right-click menu:</p>
+    <pre><code class="language-js">document.addEventListener("contextmenu", (event) => event.preventDefault());</code></pre>
+  </div>
+  <div class="section">
+    <h2>2. Block Ctrl + U, S, C</h2>
+    <pre><code class="language-js">
+document.addEventListener("contextmenu", (event) => event.preventDefault());
+document.addEventListener("keydown", (event) => {
+  if (event.ctrlKey && (event.key === "u" || event.key === "s" || event.key === "c")) {
+    event.preventDefault();
+  }
+});
+    </code></pre>
+  </div>
+  <div class="section">
+    <h2>3. Alert on Right Click</h2>
+    <pre><code class="language-js">
+document.addEventListener("contextmenu", (event) => {
+  event.preventDefault();
+  alert("Right-click is disabled!");
+});
+    </code></pre>
+  </div>
+  <div class="section">
+    <h2>4. Disable Right Click on Images</h2>
+    <pre><code class="language-js">
+document.querySelectorAll("img").forEach(img => {
+  img.addEventListener("contextmenu", (event) => event.preventDefault());
+});
+    </code></pre>
+  </div>
+  <div class="section">
+    <h2>5. CSS Only Method</h2>
+    <pre><code class="language-css">
+img {
+  pointer-events: none;
+}
+    </code></pre>
+  </div>
+  <div class="footer">
+    © 2025 techumayur — All rights reserved.
+  </div>
+</div>
+<!-- Prism JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+<script src="right-clck.js"></script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+body {
+    background-color: #f8f9fa;
+}
+
+.card {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.5s, opacity 0.5s;
+}
+
+.card.swipe-left {
+    transform: translateX(-1000px) rotate(-30deg);
+    opacity: 0;
+}
+
+.card.swipe-right {
+    transform: translateX(1000px) rotate(30deg);
+    opacity: 0;
+}
+
+.card.reset {
+    transform: none;
+    opacity: 1;
+}

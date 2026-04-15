@@ -1,15 +1,25 @@
-// Function to fetch a random quote from the Quotable API
+// Function to fetch a random quote from local quotes.json
 async function fetchRandomQuote() {
   try {
-    const response = await fetch("https://api.quotable.io/random");
+    const response = await fetch("quotes.json"); // local file
     const data = await response.json();
-    return data;
+
+    // pick random index
+    const randomIndex = Math.floor(Math.random() * data.length);
+    const quote = data[randomIndex];
+
+    return { 
+      content: quote.text, 
+      author: quote.author && quote.author.trim() !== "" ? quote.author : "Unknown" 
+    };
   } catch (error) {
     console.error("Error fetching quote:", error);
     return { content: "Failed to fetch a quote.", author: "Unknown" };
   }
 }
-// Function to generate a new quote using the Quotable API
+
+
+// Function to generate a new quote
 async function generateNewQuote() {
   const quoteText = document.getElementById("quoteText");
   const quoteName = document.getElementById("quoteName");
@@ -17,7 +27,8 @@ async function generateNewQuote() {
   quoteText.textContent = newQuote.content;
   quoteName.textContent = newQuote.author;
 }
-// Function to copy the current quote to the clipboard
+
+// Copy quote to clipboard
 function copyQuote() {
   const quoteText = document.getElementById("quoteText");
   const textArea = document.createElement("textarea");
@@ -26,14 +37,15 @@ function copyQuote() {
   textArea.select();
   document.execCommand("copy");
   document.body.removeChild(textArea);
+
   const tooltip = document.getElementById("tooltip");
   tooltip.style.display = "block";
   setTimeout(() => {
     tooltip.style.display = "none";
   }, 1500);
 }
-// Function to share the current quote on Twitter
-// Function to share the current quote on Facebook
+
+// Share functions
 function shareOnFacebook() {
   const quoteText = document.getElementById("quoteText").textContent;
   const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
@@ -41,7 +53,7 @@ function shareOnFacebook() {
   )}&quote=${encodeURIComponent(quoteText)}`;
   window.open(facebookUrl, "_blank");
 }
-// Function to share the current quote on Twitter
+
 function shareOnTwitter() {
   const quoteText = document.getElementById("quoteText").textContent;
   const authorName = document.getElementById("quoteName").textContent;
@@ -50,6 +62,7 @@ function shareOnTwitter() {
   )}`;
   window.open(twitterUrl, "_blank");
 }
+
 function shareOnInstagram() {
   const quoteText = document.getElementById("quoteText").textContent;
   const instagramDirectUrl = `https://www.instagram.com/direct/new/?text=${encodeURIComponent(
@@ -57,12 +70,12 @@ function shareOnInstagram() {
   )}`;
   window.open(instagramDirectUrl, "_blank");
 }
+
 function shareOnWhatsAppStatus() {
   const quoteText = document.getElementById("quoteText").textContent;
-  const whatsappStatusUrl = `https://wa.me/?text=${encodeURIComponent(
-    quoteText
-  )}`;
+  const whatsappStatusUrl = `https://wa.me/?text=${encodeURIComponent(quoteText)}`;
   window.open(whatsappStatusUrl, "_blank");
 }
+
 // Initial quote generation
 generateNewQuote();
